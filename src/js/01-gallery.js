@@ -44,15 +44,15 @@ function onGalleryContainerClick(evt) {
     
     evt.preventDefault();
 
-  const originalImgUrl = event.target.dataset.source;
+  const originalImgUrl = evt.target.dataset.source;
   backdropImg.element().querySelector("img").src = originalImgUrl;
   backdropImg.show();
 
   document.addEventListener("keydown", onEscKeyDownBackdropClose);
 }
 
-function onEscKeyDownBackdropClose(event) {
-  if (!(backdropImg.visible() && event.key === "Escape")) {
+function onEscKeyDownBackdropClose(evt) {
+  if (!(backdropImg.visible() && evt.key === "Escape")) {
     return;
   }
   backdropImg.close();
@@ -65,7 +65,6 @@ function addLazyloadToImg() {
     lazyImages.forEach((imgEl) => {
       imgEl.loading = "lazy";
     });
-    const lazyScript = document.createElement("script");
 
   } else {
     console.log('!!!!!!!!!!!!');
